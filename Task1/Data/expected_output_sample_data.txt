@@ -1,0 +1,10 @@
+{"name": "Deepti", "strike_rate": 61.551}	
+{"name": "Harmanpreet", "strike_rate": 87.124}	
+{"name": "Ishan", "strike_rate": 85.077}	
+{"name": "Jemimah", "strike_rate": 77.407}	
+{"name": "Renuka", "strike_rate": 74.35}	
+{"name": "Rohit", "strike_rate": 71.464}	
+{"name": "Shubman", "strike_rate": 66.041}	
+{"name": "Smriti", "strike_rate": 57.807}	
+{"name": "VVS Laxman", "strike_rate": 64.078}	
+{"name": "Virat", "strike_rate": 89.928}	
