@@ -1,39 +1,37 @@
+# SSH Service Restart
 sudo service ssh restart
 
+# Change HDFS Permissions
+hdfs dfs -chmod g+w /tmp
+
+# Start Hadoop YARN and HDFS
 cd ~/hadoop/hadoop-3.3.2/
 ~/hadoop/hadoop-3.3.2/sbin/start-yarn.sh
 ~/hadoop/hadoop-3.3.2/sbin/start-dfs.sh
 
-
+# Stop Hadoop YARN and HDFS
 ~/hadoop/hadoop-3.3.2/sbin/stop-yarn.sh
 ~/hadoop/hadoop-3.3.2/sbin/stop-dfs.sh
 
-
-hdfs dfs -chmod g+w /tmp
-
-To start Spark, run the following command:
-/opt/spark/sbin/start-all.sh
-To stop Spark, run the following command:
-/opt/spark/sbin/stop-all.sh
-
-
+# Hadoop Streaming Job
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.2.jar \
 -mapper "$PWD/mapper.py" \
 -reducer "$PWD/reducer.py" \
 -input /files/sample_data.json \
 -output /files/output-1
 
-kafka zookeeper
-$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties
+# Start and Stop Spark
+/opt/spark/sbin/start-all.sh
+/opt/spark/sbin/stop-all.sh
 
-kafka
+
+# Kafka Zookeeper and Server Start
+$KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties
 $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
 
-producer
+# Kafka Producer and Consumer
 $KAFKA_HOME/bin/kafka-console-producer.sh --topic test --broker-list localhost:9092
-
-cosumer
 $KAFKA_HOME/bin/kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server localhost:9092
 
-
+# Spark Job Submission
 $SPARK_HOME/bin/spark-submit test.py /meowmaster/case_2012.csv /meowmaster/case_2013.csv /meowmaster/case_2014.csv /meowmaster/cases_state_key.csv /meowmaster/judges_clean.csv /meowmaster/judge_case_merge_key.csv /meowmaster/acts_sections.csv ~/Code/solution.txt
